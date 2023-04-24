@@ -34,6 +34,7 @@ def ia_move(game: Game, depth):
         if game_copy.make_move(m):
             moves[m] = minmax(game_copy, True, depth, m)
         game_copy = game.copy()
+    print(moves)
     return max(moves.keys(), key=lambda k: moves[k])
 
 
@@ -55,7 +56,7 @@ def heuristic(game: Game, opponent_turn: bool = False):
     three_aligned += bin(player & (player >> 8) & (player >> 16)).count('1')
     three_aligned += bin(player & (player >> 6) & (player >> 12)).count('1')
 
-    return two_aligned + three_aligned * 10
+    return two_aligned + three_aligned * 5
 
 
 def alphabeta(game: Game):
